@@ -29,7 +29,8 @@ public class SortingArrays {
 		        }
 		    }
 		}
-		//Printing output
+		//Printing output but still printing every memeber of an array, i'll try to find out to print only element that reapet 
+		// and how time are repeated
 		for (int i = 0; i <  new_array.length; i++) {
 		    System.out.println("\t" + crr_array[i] + "\t" +  new_array[i] + "\t" + times[i]);
 
