@@ -1,5 +1,5 @@
-import java.lang;
-import java.Array;
+package nizovi;
+
 import java.util.HashMap;
 
 
@@ -30,19 +30,24 @@ public class NizoviZadatak{
                 arrayaz[k++]=array[i];
             }
         }
+        System.out.print("Clanovi niza kojih ukupno ima: ");
         printArray(array);
+        System.out.print("Negativnih clanova ima : ");
         printArray(arraybz);
-        printArray(arrayaz);  
+        System.out.print("Pozitivnih clanova ima : ");
+        printArray(arrayaz);
+       
     }
-
     /*implementacija metode za ispisisvanje niza na conzolu, prosledimo joj neki niz kao
      * argument i ona ga stampa*/
     public static   void printArray(int [] array){
-        System.out.println("Clanovi niza kojih ukupno ima: "+ array.length);
+        System.out.print(array.length);
+        System.out.print(" { ");
         for (int i=0;i<array.length;i++){
-            System.out.printf(array[i]+ " ");
+            System.out.print(array[i]);
+            if(i<array.length-1) System.out.print(", ");
         }
-        System.out.println("");
+        System.out.println(" }");
 
     }
 
@@ -85,6 +90,8 @@ public class NizoviZadatak{
 		        }
 		    }
         }
-        System.out.println(map);
+		
+		System.out.println(map);
+      
     }
 }
