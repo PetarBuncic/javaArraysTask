@@ -1,14 +1,11 @@
 package nizovi;
 
-import java.util.HashMap;
-
-
 public class NizoviZadatak{
     public static void main(String[] args) {
-        int [] array={12,23,-22,0,43,545,-4,-55,43,12,0,-99,-87};
+        int [] array={12,23,-22,43,0,545,-4,-55,43,12,-99,-87,0,12,-55,43};
         
         rasporediClanoveNiza(array);// pozivamo metodu(funkciju koja raspodeljuje clanove na poz i negativne i stampa sva tri niza)
-        findDuplicates(array); //metoda za pronalazenje duplikata i stampanje koliko se puta pojavljuju
+        findDuplicates(array); //metoda za pronalazenje duplikata, stampanja koji su to clanovi i stampanje koliko se puta pojavljuju
        
        
     }
@@ -71,27 +68,72 @@ public class NizoviZadatak{
         }
         return count;
     }
-    /*/metoda koja pronalazi duplikate i stampa ih preko hashMap 
-    videti HashMap class ima po par elemenata u nasem slucaju upisuje clan niza koji se ponavlja i koliko puta */
+    /*/metoda koja pronalazi duplikate i broj nula (0) koje se pojavljuju
+    postoje dva pomocna niza new_array i times, u prvi ipisujemo brojeve koji se ponavljaju na onim pozicijama kao i u osnovnom zadatom nizu
+    i povecavamo vrednost clana times niza za 1 na tom mestu, pravimo dakle par gde na istim mestima imamo clana koji se ponavlja i broj ponavljanja  */
     public static void findDuplicates(int [] array) {
-        HashMap <Integer,Integer> map= new HashMap();
-        int size= array.length;       
+	 	int size= array.length;
+	 	int brojnulaunizu=0;
 		int[] new_array= new int[size];
         int[] times = new int[size];
+        //u pomocnom nizu koji cuva broj ponavljanja elemenata sve elemente inicijalizujemo na 1 (svaki el. naseg niza se pojavljuje jednom)
         for(int i=0;i<times.length;i++){
             times[i]=1;
         }
+        /* // Pretrazujemo koji clan se ponavlja i kreiramo pomocni niz(new_array)u koji ubacijemo brojeve 
+         * koji se ponavljaju i uvecavamao boj ponavljanja clan niza na isoj poziciji  times[i]++ ostali clanovi niza po defoultu 
+         * ostaju da imaju vrednost nula*/
 		for (int j = 0; j < array.length; j++) {
 		    for (int i = j; i < array.length; i++) {
 		        if (array[j] == array[i] && j != i) {
                         new_array[i]=array[i];
                         times[i]++;
-                        map.put(new_array[i],times[i]);
+                      
 		        }
 		    }
         }
+		/*u novom pomonom nizu uporedjujemo ubacene clanove i ako neki prethodni clan vec postoji setujemo ga na tom prethodnom 
+		 * mestu na 0 jer i broj ponavljanja u nizu times je manji za jedan nego na trenutnoj poziciji, ovo radimo radi preglednije stampe
+		 * bez ove for petlje stmpalo bi svako  pojavljivajne nekog broja vise od 2 puta sve do konacnog broja pojavljivanja, 
+		 * iskomentarisati ovu petlju pa videti i videti sta se desava */
+		for (int j = 0; j < new_array.length; j++) {
+		    for (int i = j; i < new_array.length; i++) {
+		        if (new_array[j] == new_array[i] && j != i) {
+                   new_array[j]=0;
+		        }
+		       
+		    }
+		}
+		/*zbog specifinosti koriscenja 0 u prethodnih petljama kao reper za pronalazenje duplih clanova
+		  * broj nula u nizu prebrojavamo brojacem prolaskom kroz originalni niz, moze se implementirati i posebna funkcija koja bi 
+		  * brojala samo nule */
+		for (int i = 0; i < array.length; i++) {
+			if(array[i]==0) brojnulaunizu++;
+		}
+		// stampamo samo brojeve koji se ponavljaju sa 0 ili bez ukoliko je brojnulaunizu veci od 1
+		System.out.print("Clanovi niza koji se ponavljaju su : { ");
+		for (int i = 0; i <  new_array.length; i++) {
+            if((new_array[i] != 0) ){
+            System.out.print( new_array[i] + ", ");
+            }
+		}
+		if(brojnulaunizu>1)
+		System.out.println("0 }");
+		else
+		System.out.println(" }");
+		 
+		/* u ovom delu koda funkcije za pronalazenje duplikata ispisujemo sve one clanove naseg pomocnog niza new_array koji su 
+		 * razliciti od nule i broj ponavljanja veci od jedan pa bilo da su to negativni ili pozitivni brojevi */
 		
-		System.out.println(map);
-      
+		for (int i = 0; i <  new_array.length; i++) {
+            if((new_array[i] < 0 && times[i]>1 ) || (new_array[i] > 0 && times[i]>1 ) ){
+            System.out.println("Broj:"  + "\t" +  new_array[i] + " se pojavljuje " + times[i]+ " puta");
+            }
+          
+		}
+		 
+		/*stampamo broj nula u nizu*/
+		if(brojnulaunizu>1)// ovaj red stampamo samo ako ima vise od jedne 0(nule)
+		System.out.println("Broj:"  + "\t " +  0  + " se pojavljuje " + brojnulaunizu+ " puta");	
     }
 }
