@@ -1,5 +1,8 @@
 package nizovi;
 
+
+
+
 public class NizoviZadatak{
     public static void main(String[] args) {
         int [] array={12,23,-22,43,0,545,-4,-55,43,12,-99,-87,0,12,-55,43};
@@ -113,22 +116,25 @@ public class NizoviZadatak{
 		// stampamo samo brojeve koji se ponavljaju sa 0 ili bez ukoliko je brojnulaunizu veci od 1
 		System.out.print("Clanovi niza koji se ponavljaju su : { ");
 		for (int i = 0; i <  new_array.length; i++) {
-            if((new_array[i] != 0) ){
-            System.out.print( new_array[i] + ", ");
-            }
+            		if((new_array[i] != 0) ){
+            			System.out.print( new_array[i] + ", ");
+            		}
 		}
-		if(brojnulaunizu>1)
-		System.out.println("0 }");
-		else
-		System.out.println(" }");
+		if(brojnulaunizu>1) System.out.println("0 }");
+		else System.out.println(" }");
 		 
 		/* u ovom delu koda funkcije za pronalazenje duplikata ispisujemo sve one clanove naseg pomocnog niza new_array koji su 
 		 * razliciti od nule i broj ponavljanja veci od jedan pa bilo da su to negativni ili pozitivni brojevi */
 		
 		for (int i = 0; i <  new_array.length; i++) {
-            if((new_array[i] < 0 && times[i]>1 ) || (new_array[i] > 0 && times[i]>1 ) ){
-            System.out.println("Broj:"  + "\t" +  new_array[i] + " se pojavljuje " + times[i]+ " puta");
-            }
+			/*razdvojen uslov u prvom trazimo manje od nule koji se pjavljuju vise od 1 put*/
+            		if(new_array[i] < 0 && times[i]>1 ){
+           		 	System.out.println("Broj:"  + "\t" +  new_array[i] + " se pojavljuje " + times[i]+ " puta");
+            		}
+			/*ili veci od nule koji se pojavljuju vise od 1 put*/
+           		 else if (new_array[i] > 0 && times[i]>1 ){
+                		System.out.println("Broj:"  + "\t" +  new_array[i] + " se pojavljuje " + times[i]+ " puta");
+            		}
           
 		}
 		 
