@@ -1,5 +1,3 @@
-package nizovi;
-
 import java.util.Scanner;
 
 public class SortingArrays {
