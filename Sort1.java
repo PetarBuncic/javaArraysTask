@@ -4,6 +4,9 @@ import java.lang.*;
 
 public class Sort1 {
 
+	
+	
+	
 	public static void main(String[] args) {
         int [] array={12,23,-22,0,43,545,-4,-55,43,12,0,43,-99,-87,12,12,4,-4,0,55,55};
         HashMap <Integer,Integer> map= new HashMap();
