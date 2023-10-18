@@ -1,8 +1,6 @@
 package nizovi;
 
 
-
-
 public class NizoviZadatak{
     public static void main(String[] args) {
         int [] array={12,23,-22,43,0,545,-4,-55,43,12,-99,-87,0,12,-55,43};
