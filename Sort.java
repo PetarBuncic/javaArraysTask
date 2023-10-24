@@ -17,7 +17,7 @@ public class Sort {
         }
 
 		
-		// Search for repeated elements
+		// Search for repeated elements test
 		for (int j = 0; j < array.length; j++) {
 		    for (int i = j; i < array.length; i++) {
 		        if (array[j] == array[i] && j != i) {
